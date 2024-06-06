@@ -18,6 +18,7 @@ export default function CuisineEditPage({ url }) {
     async function handleEdit() {
         try {
             setLoading(true)
+            console.log(category);
             await axios.put(`${url}/apis/restaurant-app/cuisines/${id}`, {
                 name: name,
                 description: description,
@@ -29,7 +30,7 @@ export default function CuisineEditPage({ url }) {
                     Authorization: `Bearer ${localStorage.access_token}`
                 }
             })
-
+            
             navigate('/cuisines')
 
             Toastify({
@@ -163,7 +164,7 @@ export default function CuisineEditPage({ url }) {
                                     let isSelected = false
                                     if (cat.id === category) isSelected = true
                                     return (
-                                        <option selected={isSelected} defaultValue={cat.id}>{cat.name}</option>
+                                        <option selected={isSelected} value={cat.id}>{cat.name}</option>
                                     )
                                 })}
                             </select>
