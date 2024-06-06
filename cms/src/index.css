@@ -1,0 +1,421 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.headerContainer {
+  background-color: black;
+  color: white;
+  display: flex;
+  padding: 25px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_home {
+  font-size: 25px;
+}
+
+.CTA_home {
+  display: flex;
+  gap: 30px;
+}
+
+.default_button {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 7px 14px;
+  font-size: 12px;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+}
+
+.homeImage {
+  display: flex;
+  background-color: gray;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainImage {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 150%;
+  z-index: -1;
+}
+
+.button_imgNav {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 7px 2px;
+  font-size: 15px;
+  background-color: black;
+  color: white;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+}
+
+.categoryFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  width: 750px;
+}
+
+.button_category {
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+  font-weight: 900;
+  background-color: transparent;
+  display: flex;
+  border: 0px;
+  line-height: 30px;
+  border-bottom: 1px solid gray;
+}
+
+.categoryTitle {
+  font-size: 22px;
+  padding: 20px;
+  display: flex;
+  font-weight: bolder;
+}
+
+.cardContainer {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  width: 100%;
+  display: grid;
+  gap: 30px;
+justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+}
+
+.cuisineCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 280px;
+  padding: 10px;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.cardText {
+  display: flex;
+  gap: 20px;
+  height: fit-content;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cuisineName {
+  width: 150px;
+}
+
+.cuisineImage {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.button_viewDetail {
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 7px 0px;
+  width: 100%;
+}
+
+.detailPage {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+  gap: 10px;
+}
+
+.detailTitle {
+  font-size: 23px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailDescription {
+  display: flex;
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  margin-bottom: 100px;
+}
+
+.detailCategory {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+.formOuterContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+.formContainer {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 30px 40px;
+  border-radius: 10px;
+  gap: 30px;
+  color: white;
+}
+
+.formContainerVert {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 30px 40px;
+  border-radius: 10px;
+  gap: 10px;
+  color: white;
+}
+
+.inputField {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button_form {
+  border: 1px solid white;
+  background-color: transparent;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 7px 14px;
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.selectOption {
+  display: flex;
+  width: 170px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.searchBar {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.searchInput {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 250px;
+  color: red;
+  border-color: red;
+}
+
+.submitButton {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px 14px;
+  color: red;
+  font-weight: bold;
+  border-color: red;
+  background-color: transparent;
+}
+
+.pagingContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+.pagination {
+  border: 2px solid black;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pageTitle {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+  display: flex;
+}
+
+.pageMargin {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.tableStyle {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.tableStyle thead tr {
+  background-color: gray;
+  color: white;
+}
+
+.tableStyle th,
+.tableStyle td {
+  padding: 10px;
+  border: 1px solid #777;
+}
+
+.tableStyle tbody tr:nth-child(even) {
+  background-color: #efefef;
+}
+
+@media (max-width: 600px), (max-device-width: 600px) {
+  .tableStyle thead {
+      display: none;
+  }
+
+  .tableStyle tbody tr {
+      display: block;
+      margin-bottom: 25px;
+      background: transparent !important;
+  }
+
+  .tableStyle td {
+      background: #f0f0f0;
+      display: flex;
+      width: 90%;
+      margin: auto;
+  }
+}
+
+.tableImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.tableAction {
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  justify-content: space-between;
+}
+
+.actionButton {
+  border: 1px solid black;
+  display: flex;
+  border-radius: 5px;
+  padding: 7px 14px;
+  background-color: transparent;
+  justify-content: center;
+  color: black;
+}
+
+.inputFiel2 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formContainer2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  margin-bottom: 150px;
+}
+
+.selectOpt {
+  width: 169px;
+}
+
+.imageUpload {
+  display: flex;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 5px 12px;
+}
+
+.newButton {
+  display: flex;
+  justify-content: center;
+  padding: 8px 14px;
+  width: 200px;
+  color: green;
+  border: 2px solid green;
+  border-radius: 10px;
+}
+
+.tableTitle_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid gray;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.pubHead {
+  display: flex;
+  padding: 10px 20px;
+  border-bottom: 1px solid gray;
+  justify-content: center;
+}
