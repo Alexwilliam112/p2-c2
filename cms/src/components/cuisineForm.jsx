@@ -1,46 +1,102 @@
-import { useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Toastify from 'toastify-js';
+import DefaultButton from "./button";
 
-export default function CuisineForm() {
+export default function CuisineForm({ url, handleSubmit }) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [imgUrl, setImgUrl] = useState('')
     const [category, setCategory] = useState('')
+    const [categories, setCategories] = useState([])
+    const navigate = useNavigate()
+
+    async function fetchCategories() {
+        try {
+            const data = await axios.get(`${url}/apis/restaurant-app/categories`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.access_token}`
+                }
+            })
+
+            setCategories(data.data.data)
+
+        } catch (err) {
+            Toastify({
+                text: err,
+                duration: 2000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "#EF4C54",
+                    color: "#17202A",
+                    boxShadow: "0 5px 10px black",
+                    fontWeight: "bold",
+                    position: "absolute",
+                    right: 0
+                }
+            }).showToast();
+
+        } finally {
+        }
+    }
+
+    useEffect(() => {
+        fetchCategories()
+    }, [])
 
     return (
-        <div className="formOuterContainer">
-            <form action="" method="post" className="formContainer">
-                <p className="detailTitle">ADD / EDIT CUISINE</p>
-                <div className="inputField">
-                    <label htmlFor="name">NAME</label>
-                    <input type="text" name="name" onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="inputField">
-                    <label htmlFor="description">DESCRIPTION</label>
-                    <input type="text" name="description" onChange={(e) => setDescription(e.target.value)} />
-                </div>
-                <div className="inputField">
-                    <label htmlFor="price">PRICE</label>
-                    <input type="text" name="price" onChange={(e) => setPrice(e.target.value)} />
-                </div>
-                <div className="inputField">
-                    <label htmlFor="imgUrl">IMAGE URL</label>
-                    <input type="text" name="imgUrl" onChange={(e) => setImgUrl(e.target.value)} />
-                </div>
-                <div className="inputField">
-                    <label htmlFor="category">CATEGORY</label>
-                    <select name="category" id="category" onChange={(e) => setCategory(e.target.value)} className="selectOption">
-                        <option value="1">CATEGORY 1</option>
-                        <option value="2">CATEGORY 2</option>
-                        <option value="3">CATEGORY 3</option>
-                        <option value="4">CATEGORY 4</option>
-                        <option value="5">CATEGORY 5</option>
-                    </select>
-                </div>
-                <button className="button_form">
-                    ADD USER
-                </button>
-            </form>
-        </div>
+        <>
+            <img src="./assets/background.png" alt="" className="backgroundImage" />
+            <main>
+                <form onSubmit={(e) => handleSubmit(e, name, description, price, imgUrl, category)}>
+
+                    <div className="formOuterContainer">
+                        <div className="formContainer">
+                            <p className="detailTitle">CREATE NEW CUISINE</p>
+                            <div className="inputField">
+                                CUISINE NAME
+                                <input type="text" onChange={(e) => setName(e.target.value)} />
+                            </div>
+                            <div className="inputField">
+                                DESCRIPTION
+                                <input type="text" onChange={(e) => setDescription(e.target.value)} />
+                            </div>
+                            <div className="inputField">
+                                PRICE
+                                <input type="number" onChange={(e) => setPrice(e.target.value)} />
+                            </div>
+                            <div className="inputField">
+                                IMAGE URL
+                                <input type="text" onChange={(e) => setImgUrl(e.target.value)} />
+                            </div>
+                            <div className="inputField">
+                                CATEGORY
+                                <select onChange={(e) => setCategory(e.target.value)} className="selectOpt">
+                                    <option value="">---SELECT---</option>
+                                    {categories.map((cat) => {
+                                        return (
+                                            <option value={cat.id}>{cat.name}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <div className="CTA_home">
+                                <button type="submit" className="actionButton2">
+                                    CONFIRM
+                                </button>
+                                <DefaultButton cb={() => { navigate("/cuisines") }} tag={'CANCEL'} />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </main>
+        </>
     )
 }
