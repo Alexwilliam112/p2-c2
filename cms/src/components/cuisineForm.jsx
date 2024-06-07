@@ -52,11 +52,11 @@ export default function CuisineForm({ url, handleSubmit, formTitle, cuisine }) {
 
     useEffect(() => {
         if (cuisine) {
-            setName(cuisine.name)
-            setDescription(cuisine.description)
-            setPrice(cuisine.price)
-            setImgUrl(cuisine.imgUrl)
-            setCategory(cuisine.categoryId)
+            setName(cuisine?.name)
+            setDescription(cuisine?.description)
+            setPrice(cuisine?.price)
+            setImgUrl(cuisine?.imgUrl)
+            setCategory(cuisine?.categoryId)
         }
     }, [cuisine])
 
