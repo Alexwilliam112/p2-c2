@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Toastify from 'toastify-js';
 import DefaultButton from "./button";
 
-export default function CuisineForm({ url, handleSubmit }) {
+export default function CuisineForm({ url, handleSubmit, formTitle, cuisine }) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
@@ -50,6 +50,16 @@ export default function CuisineForm({ url, handleSubmit }) {
         fetchCategories()
     }, [])
 
+    useEffect(() => {
+        if (cuisine) {
+            setName(cuisine.name)
+            setDescription(cuisine.description)
+            setPrice(cuisine.price)
+            setImgUrl(cuisine.imgUrl)
+            setCategory(cuisine.categoryId)
+        }
+    }, [cuisine])
+
     return (
         <>
             <img src="./assets/background.png" alt="" className="backgroundImage" />
@@ -58,26 +68,26 @@ export default function CuisineForm({ url, handleSubmit }) {
 
                     <div className="formOuterContainer">
                         <div className="formContainer">
-                            <p className="detailTitle">CREATE NEW CUISINE</p>
+                            <p className="detailTitle">{formTitle}</p>
                             <div className="inputField">
                                 CUISINE NAME
-                                <input type="text" onChange={(e) => setName(e.target.value)} />
+                                <input type="text" onChange={(e) => setName(e.target.value)} defaultValue={name}/>
                             </div>
                             <div className="inputField">
                                 DESCRIPTION
-                                <input type="text" onChange={(e) => setDescription(e.target.value)} />
+                                <input type="text" onChange={(e) => setDescription(e.target.value)} defaultValue={description} />
                             </div>
                             <div className="inputField">
                                 PRICE
-                                <input type="number" onChange={(e) => setPrice(e.target.value)} />
+                                <input type="number" onChange={(e) => setPrice(e.target.value)} defaultValue={price} />
                             </div>
                             <div className="inputField">
                                 IMAGE URL
-                                <input type="text" onChange={(e) => setImgUrl(e.target.value)} />
+                                <input type="text" onChange={(e) => setImgUrl(e.target.value)} defaultValue={imgUrl} />
                             </div>
                             <div className="inputField">
                                 CATEGORY
-                                <select onChange={(e) => setCategory(e.target.value)} className="selectOpt">
+                                <select onChange={(e) => setCategory(e.target.value)} className="selectOpt" value={category}>
                                     <option value="">---SELECT---</option>
                                     {categories.map((cat) => {
                                         return (

@@ -79,7 +79,7 @@ export default function AddCuisine({ url }) {
                 </div>
             ) : (
                 <main>
-                    <CuisineForm url={url} handleSubmit={handleCreate} />
+                    <CuisineForm url={url} handleSubmit={handleCreate} formTitle={'CREATE NEW CUISINE'}/>
                 </main>
             )}
         </>

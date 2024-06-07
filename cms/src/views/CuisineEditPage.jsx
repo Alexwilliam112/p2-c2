@@ -1,24 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Toastify from 'toastify-js';
+import CuisineForm from "../components/cuisineForm";
 
 export default function CuisineEditPage({ url }) {
     const [cuisine, setCuisine] = useState({})
     const [loading, setLoading] = useState(false)
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0)
-    const [imgUrl, setImgUrl] = useState('')
-    const [categories, setCategories] = useState([])
-    const [category, setCategory] = useState('')
     const { id } = useParams()
     const navigate = useNavigate()
 
-    async function handleEdit() {
+    async function handleEdit(e, name, description, price, imgUrl, category) {
         try {
+            e.preventDefault()
             setLoading(true)
-            console.log(category);
+            
             await axios.put(`${url}/apis/restaurant-app/cuisines/${id}`, {
                 name: name,
                 description: description,
@@ -73,7 +69,7 @@ export default function CuisineEditPage({ url }) {
 
         } finally {
             setLoading(false)
-            redirect('/cuisines')
+            navigate('/cuisines')
         }
     }
 
@@ -87,19 +83,7 @@ export default function CuisineEditPage({ url }) {
                 }
             })
 
-            const categories = await axios.get(`${url}/apis/restaurant-app/categories`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.access_token}`
-                }
-            })
-
             setCuisine(data.data.data)
-            setCategories(categories.data.data)
-            setName(data.data.data.name)
-            setDescription(data.data.data.description)
-            setPrice(data.data.data.price)
-            setCategory(data.data.data.categoryId)
-            setImgUrl(data.data.data.imgUrl)
 
         } catch (err) {
             Toastify({
@@ -137,48 +121,8 @@ export default function CuisineEditPage({ url }) {
                     <img src="../../gif/loading.gif" />
                 </div>
             ) : (
-                <main className="formContainer2">
-                    <div className="formContainerVert">
-                        EDIT CUISINE
-                        <div className="inputField2">
-                            <p>NAME</p>
-                            <input type="text" defaultValue={name} onChange={(e) => {setName(e.target.value)}}/>
-                        </div>
-                        <div className="inputField2">
-                            <p>DESCRIPTION</p>
-                            <input type="area" defaultValue={description} onChange={(e) => {setDescription(e.target.value)}}/>
-                        </div>
-                        <div className="inputField2">
-                            <p>PRICE</p>
-                            <input type="number" defaultValue={price} onChange={(e) => {setPrice(e.target.value)}}/>
-                        </div>
-                        <div className="inputField2">
-                            <p>IMAGE URL</p>
-                            <input type="text" defaultValue={imgUrl} onChange={(e) => {setImgUrl(e.target.value)}}/>
-                        </div>
-                        <div className="inputField2">
-                            <p>CATEGORY</p>
-                            <select name="" id="" className="selectOpt" onChange={(e) => {setCategory(e.target.value)}}>
-                                <option value="">---SELECT---</option>
-                                {categories.map((cat) => {
-                                    let isSelected = false
-                                    if (cat.id === category) isSelected = true
-                                    return (
-                                        <option selected={isSelected} value={cat.id}>{cat.name}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        <br />
-                        <div className="CTA_home">
-                            <div className="default_button" onClick={() => {handleEdit()}}>
-                                CONFIRM
-                            </div>
-                            <div className="default_button" onClick={() => {navigate("/cuisines")}}>
-                                CANCEL
-                            </div>
-                        </div>
-                    </div>
+                <main>
+                    <CuisineForm url={url} handleSubmit={handleEdit} formTitle={'EDIT CUISINE'} cuisine={cuisine} />
                 </main>
             )}
         </>
