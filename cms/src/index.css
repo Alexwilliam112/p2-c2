@@ -354,13 +354,14 @@ justify-items: center;
 }
 
 .actionButton {
-  border: 1px solid black;
+  border: 2px solid black;
   display: flex;
   border-radius: 5px;
   padding: 7px 14px;
   background-color: transparent;
   justify-content: center;
   color: black;
+  cursor: pointer;
 }
 
 .inputFiel2 {
@@ -418,4 +419,15 @@ justify-items: center;
   padding: 10px 20px;
   border-bottom: 1px solid gray;
   justify-content: center;
+}
+
+.actionButton2 {
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  border-radius: 5px;
+  padding: 7px 14px;
+  justify-content: center;
+  color: black;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { redirect, useNavigate, useParams } from "react-router-dom";
 import Toastify from 'toastify-js';
+import DefaultButton from "../components/button";
 
 export default function CuisineImageUpload({ url }) {
     const [loading, setLoading] = useState(false)
@@ -109,12 +110,8 @@ export default function CuisineImageUpload({ url }) {
                         </div>
                         <br />
                         <div className="CTA_home">
-                            <div className="default_button" onClick={() => { handleUpload() }}>
-                                CONFIRM
-                            </div>
-                            <div className="default_button" onClick={() => {navigate("/cuisines")}}>
-                                CANCEL
-                            </div>
+                            <DefaultButton cb={() => { handleUpload() }} tag={'CONFIRM'} />
+                            <DefaultButton cb={() => {navigate("/cuisines")}} tag={'CANCEL'} />
                         </div>
                     </div>
                 </main>

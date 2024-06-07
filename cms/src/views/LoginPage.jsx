@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toastify from 'toastify-js';
+import DefaultButton from "../components/button";
 
 export default function LoginForm({ url }) {
     const [email, setEmail] = useState('')
@@ -84,9 +85,7 @@ export default function LoginForm({ url }) {
                                 <input type="password" onChange={(e) => setPassword(e.target.value)} />
                             </div>
 
-                            <button className="button_form" onClick={() => { handleLogin() }}>
-                                LOGIN
-                            </button>
+                            <DefaultButton cb={() => { handleLogin() }} tag={'LOGIN'} />
                         </div>
                     </div>
                 </main>

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Toastify from 'toastify-js';
+import DefaultButton from "./button";
 
 export default function Navbar() {
     const navigate = useNavigate()
@@ -36,21 +37,11 @@ export default function Navbar() {
                 KFC
             </div>
             <div className="CTA_home">
-                <div onClick={() => {navigate('/categories')}} className="default_button">
-                    CATEGORIES
-                </div>
 
-                <div onClick={() => {navigate('/cuisines')}} className="default_button">
-                    CUISINES
-                </div>
-
-                <div onClick={() => {navigate('/add-user')}} className="default_button">
-                    ADD USER
-                </div>
-
-                <div className="default_button" onClick={() => handleLogout()}>
-                    LOGOUT
-                </div>
+                <DefaultButton cb={() => { navigate('/categories') }} tag={'CATEGORIES'} />
+                <DefaultButton cb={() => { navigate('/cuisines') }} tag={'CUISINES'} />
+                <DefaultButton cb={() => { navigate('/add-user') }} tag={'ADD USER'} />
+                <DefaultButton cb={() => handleLogout()} tag={'LOGOUT'} />
 
             </div>
         </div>

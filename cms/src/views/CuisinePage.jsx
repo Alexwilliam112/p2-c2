@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toastify from 'toastify-js';
+import ActionButton from "../components/actionButton";
 
 export default function CuisinePage({ url }) {
     const [loading, setLoading] = useState(false)
@@ -92,9 +93,7 @@ export default function CuisinePage({ url }) {
                             CUISINES
                         </div>
 
-                        <div onClick={() => {navigate("/create-cuisine")}} className="newButton">
-                            NEW CUISINE
-                        </div>
+                        <ActionButton cb={() => {navigate("/create-cuisine")}} tag={'NEW CUISINE'} />
                     </div>
 
                     <table className="tableStyle">
@@ -146,18 +145,10 @@ export default function CuisinePage({ url }) {
                                             {el.User.username}
                                         </td>
                                         <td className="tableAction">
-                                            <div onClick={() => {navigate("/cuisines/" + el.id)}} className="actionButton">
-                                                VIEW DETAIL
-                                            </div>
-                                            <div onClick={() => {navigate("/cuisines/edit/" + el.id)}} className="actionButton">
-                                                EDIT ITEM
-                                            </div>
-                                            <div onClick={() => {navigate("/cuisines/uploadImage/" + el.id)}} className="actionButton">
-                                                UPLOAD IMAGE
-                                            </div>
-                                            <div className="actionButton" onClick={() => { handleDelete(el.id) }}>
-                                                DELETE
-                                            </div>
+                                            <ActionButton cb={() => {navigate("/cuisines/" + el.id)}} tag={'VIEW DETAIL'} />
+                                            <ActionButton cb={() => {navigate("/cuisines/edit/" + el.id)}} tag={'EDIT ITEM'} />
+                                            <ActionButton cb={() => {navigate("/cuisines/uploadImage/" + el.id)}} tag={'UPLOAD IMAGE'} />
+                                            <ActionButton cb={() => { handleDelete(el.id) }} tag={'DELETE'} />
                                         </td>
                                     </tr>
                                 )
