@@ -96,7 +96,7 @@ export default function HomePage({ url }) {
                     <div className="categoryContainer">
                         {categories.map((el) => {
                             return (
-                                <button className="button_category" onClick={() => {
+                                <button key={el.id} className="button_category" onClick={() => {
                                     setFilter(el.id)
                                     fetchData()
                                 }} >
@@ -108,7 +108,7 @@ export default function HomePage({ url }) {
 
                     <div className="cardContainer">
                         {cuisine.map((cuisine) => {
-                            return <CuisineCard data={cuisine} />
+                            return <CuisineCard key={cuisine.id} data={cuisine} />
                         })}
                     </div >
 
@@ -123,7 +123,7 @@ export default function HomePage({ url }) {
 
                         {page.map((el) => {
                             return (
-                                <div className="pagination" onClick={() => {
+                                <div key={el} className="pagination" onClick={() => {
                                     fetchData(el)
                                 }}>
                                     {el}
