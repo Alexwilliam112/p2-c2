@@ -62,7 +62,7 @@ export default function CuisineForm({ url, handleSubmit, formTitle, cuisine }) {
 
     return (
         <>
-            <img src="../assets/background.png" alt="" className="backgroundImage" />
+            {/* <img src="../assets/background.png" alt="" className="backgroundImage" /> */}
             <main>
                 <form onSubmit={(e) => handleSubmit(e, name, description, price, imgUrl, category)}>
 
