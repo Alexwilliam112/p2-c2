@@ -3,16 +3,16 @@ import { useState } from "react";
 import Toastify from 'toastify-js';
 
 export default function AddUserPage({ url }) {
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [address, setAddress] = useState('')
-    const [loading, setLoading] = useState(false)
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [address, setAddress] = useState('');
+    const [loading, setLoading] = useState(false);
 
     async function handleRegister() {
         try {
-            setLoading(true)
+            setLoading(true);
             await axios.post(`${url}/apis/add-user`, {
                 username,
                 email,
@@ -23,7 +23,7 @@ export default function AddUserPage({ url }) {
                 headers: {
                     Authorization: `Bearer ${localStorage.access_token}`
                 }
-            })
+            });
 
             Toastify({
                 text: "Success Register New Account",
@@ -46,7 +46,7 @@ export default function AddUserPage({ url }) {
 
         } catch (err) {
             Toastify({
-                text: err,
+                text: err.message,
                 duration: 2000,
                 newWindow: true,
                 close: true,
@@ -64,7 +64,7 @@ export default function AddUserPage({ url }) {
             }).showToast();
 
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
 
@@ -82,25 +82,25 @@ export default function AddUserPage({ url }) {
                             <p className="detailTitle">REGISTER</p>
                             <div className="inputField">
                                 <label htmlFor="email">EMAIL</label>
-                                <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} />
+                                <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="inputField">
                                 <label htmlFor="username">USERNAME</label>
-                                <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} />
+                                <input type="text" id="username" onChange={(e) => setUsername(e.target.value)} />
                             </div>
                             <div className="inputField">
                                 <label htmlFor="password">PASSWORD</label>
-                                <input type="text" name="password" onChange={(e) => setPassword(e.target.value)} />
+                                <input type="text" id="password" onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <div className="inputField">
                                 <label htmlFor="phoneNumber">PHONE NO.</label>
-                                <input type="text" name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} />
+                                <input type="text" id="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} />
                             </div>
                             <div className="inputField">
                                 <label htmlFor="address">ADDRESS</label>
-                                <input type="text" name="address" onChange={(e) => setAddress(e.target.value)} />
+                                <input type="text" id="address" onChange={(e) => setAddress(e.target.value)} />
                             </div>
-                            <button className="button_form" onClick={() => {handleRegister()}}>
+                            <button className="button_form" onClick={handleRegister}>
                                 CREATE NEW USER
                             </button>
                         </div>
@@ -108,5 +108,5 @@ export default function AddUserPage({ url }) {
                 </main>
             )}
         </>
-    )
+    );
 }

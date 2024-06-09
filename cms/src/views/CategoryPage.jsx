@@ -72,7 +72,7 @@ export default function CategoryPage({ url }) {
                         <tbody>
                             {categories.map((el) => {
                                 return (
-                                    <tr>
+                                    <tr key={el.id}>
                                         <td>
                                             {el.id}
                                         </td>

@@ -125,7 +125,7 @@ export default function CuisinePage({ url }) {
                         <tbody>
                             {cuisines.map((el) => {
                                 return (
-                                    <tr>
+                                    <tr key={el.id}>
                                         <td>
                                             {el.categoryId}
                                         </td>

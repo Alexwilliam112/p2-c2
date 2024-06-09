@@ -62,7 +62,6 @@ export default function CuisineForm({ url, handleSubmit, formTitle, cuisine }) {
 
     return (
         <>
-            {/* <img src="../assets/background.png" alt="" className="backgroundImage" /> */}
             <main>
                 <form onSubmit={(e) => handleSubmit(e, name, description, price, imgUrl, category)}>
 
@@ -91,7 +90,7 @@ export default function CuisineForm({ url, handleSubmit, formTitle, cuisine }) {
                                     <option value="">---SELECT---</option>
                                     {categories.map((cat) => {
                                         return (
-                                            <option value={cat.id}>{cat.name}</option>
+                                            <option key={cat.id} value={cat.id}>{cat.name}</option>
                                         )
                                     })}
                                 </select>
